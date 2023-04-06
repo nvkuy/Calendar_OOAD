@@ -34,9 +34,7 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.btnUser = new System.Windows.Forms.Button();
 			this.btnAdd = new System.Windows.Forms.Button();
-			this.cbRemind = new System.Windows.Forms.CheckBox();
-			this.cbbTime = new System.Windows.Forms.ComboBox();
-			this.cbbType = new System.Windows.Forms.ComboBox();
+			this.button1 = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.data)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -65,6 +63,7 @@
 			this.user.Name = "user";
 			this.user.Size = new System.Drawing.Size(174, 27);
 			this.user.TabIndex = 2;
+			this.user.TextChanged += new System.EventHandler(this.user_TextChanged);
 			// 
 			// label1
 			// 
@@ -84,57 +83,34 @@
 			this.btnUser.TabIndex = 4;
 			this.btnUser.Text = "Choose";
 			this.btnUser.UseVisualStyleBackColor = true;
+			this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
 			// 
 			// btnAdd
 			// 
 			this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnAdd.Location = new System.Drawing.Point(45, 610);
+			this.btnAdd.Location = new System.Drawing.Point(186, 610);
 			this.btnAdd.Name = "btnAdd";
 			this.btnAdd.Size = new System.Drawing.Size(219, 35);
 			this.btnAdd.TabIndex = 5;
-			this.btnAdd.Text = "Add";
+			this.btnAdd.Text = "Add Meeting";
 			this.btnAdd.UseVisualStyleBackColor = true;
 			// 
-			// cbRemind
+			// button1
 			// 
-			this.cbRemind.AutoSize = true;
-			this.cbRemind.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.cbRemind.Location = new System.Drawing.Point(702, 610);
-			this.cbRemind.Name = "cbRemind";
-			this.cbRemind.Size = new System.Drawing.Size(103, 24);
-			this.cbRemind.TabIndex = 6;
-			this.cbRemind.Text = "Reminder";
-			this.cbRemind.UseVisualStyleBackColor = true;
-			// 
-			// cbbTime
-			// 
-			this.cbbTime.FormattingEnabled = true;
-			this.cbbTime.Location = new System.Drawing.Point(856, 610);
-			this.cbbTime.Name = "cbbTime";
-			this.cbbTime.Size = new System.Drawing.Size(121, 24);
-			this.cbbTime.TabIndex = 7;
-			// 
-			// cbbType
-			// 
-			this.cbbType.FormattingEnabled = true;
-			this.cbbType.Items.AddRange(new object[] {
-            "Minute",
-            "Hour",
-            "Day"});
-			this.cbbType.Location = new System.Drawing.Point(999, 610);
-			this.cbbType.Name = "cbbType";
-			this.cbbType.Size = new System.Drawing.Size(121, 24);
-			this.cbbType.TabIndex = 8;
-			this.cbbType.SelectedIndexChanged += new System.EventHandler(this.cbbType_SelectedIndexChanged);
+			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.button1.Location = new System.Drawing.Point(727, 610);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(219, 35);
+			this.button1.TabIndex = 6;
+			this.button1.Text = "Show Reminder";
+			this.button1.UseVisualStyleBackColor = true;
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1189, 657);
-			this.Controls.Add(this.cbbType);
-			this.Controls.Add(this.cbbTime);
-			this.Controls.Add(this.cbRemind);
+			this.Controls.Add(this.button1);
 			this.Controls.Add(this.btnAdd);
 			this.Controls.Add(this.btnUser);
 			this.Controls.Add(this.label1);
@@ -157,9 +133,7 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button btnUser;
 		private System.Windows.Forms.Button btnAdd;
-		private System.Windows.Forms.CheckBox cbRemind;
-		private System.Windows.Forms.ComboBox cbbTime;
-		private System.Windows.Forms.ComboBox cbbType;
+		private System.Windows.Forms.Button button1;
 	}
 }
 

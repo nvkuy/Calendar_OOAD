@@ -30,6 +30,7 @@
 		{
 			this.txtEmail = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
+			this.btnOK = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// txtEmail
@@ -50,11 +51,22 @@
 			this.label1.TabIndex = 1;
 			this.label1.Text = "Email";
 			// 
+			// btnOK
+			// 
+			this.btnOK.Location = new System.Drawing.Point(359, 46);
+			this.btnOK.Name = "btnOK";
+			this.btnOK.Size = new System.Drawing.Size(75, 23);
+			this.btnOK.TabIndex = 2;
+			this.btnOK.Text = "OK";
+			this.btnOK.UseVisualStyleBackColor = true;
+			this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+			// 
 			// Login
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(507, 154);
+			this.Controls.Add(this.btnOK);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.txtEmail);
 			this.Name = "Login";
@@ -68,5 +80,6 @@
 
 		private System.Windows.Forms.TextBox txtEmail;
 		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Button btnOK;
 	}
 }

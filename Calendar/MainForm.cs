@@ -18,7 +18,7 @@ namespace Calendar
 		}
 		public void setName(string name)
 		{
-			user.Text = name;
+			txtuser.Text = name;
 		}
 
 		
@@ -33,6 +33,13 @@ namespace Calendar
 		private void user_TextChanged(object sender, EventArgs e)
 		{
 			//data
+		}
+
+		private void btnAdd_Click(object sender, EventArgs e)
+		{
+			AddNewMeetingForm f=new AddNewMeetingForm(txtuser.Text);
+
+			f.Show();
 		}
 	}
 }

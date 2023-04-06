@@ -27,6 +27,5 @@ namespace Calendar
     
         public virtual DbSet<Meeting> Meeting { get; set; }
         public virtual DbSet<NUser> NUser { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

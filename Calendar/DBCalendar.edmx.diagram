@@ -4,10 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="072f05d5de2d474e83b1178212c7b551" Name="Diagram1">
+      <Diagram DiagramId="3ee2462537a04b60825843c75f8f0b3e" Name="Diagram1">
         <EntityTypeShape EntityType="Model.Meeting" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.NUser" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <AssociationConnector Association="Model.FK__Meeting__host__29572725" ManuallyRouted="false" />
         <AssociationConnector Association="Model.User_Meeting" ManuallyRouted="false" />
       </Diagram>

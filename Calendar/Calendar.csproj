@@ -58,11 +58,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddForm.cs">
+    <Compile Include="BeforeFinishOther.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddForm.Designer.cs">
-      <DependentUpon>AddForm.cs</DependentUpon>
+    <Compile Include="BeforeFinishOther.Designer.cs">
+      <DependentUpon>BeforeFinishOther.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BeforeFinishSelf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BeforeFinishSelf.Designer.cs">
+      <DependentUpon>BeforeFinishSelf.cs</DependentUpon>
     </Compile>
     <Compile Include="DBCalendar.Context.cs">
       <AutoGen>True</AutoGen>
@@ -78,6 +84,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DBCalendar.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="AddNewMeetingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddNewMeetingForm.Designer.cs">
+      <DependentUpon>AddNewMeetingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -99,11 +111,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>DBCalendar.tt</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="AddForm.resx">
-      <DependentUpon>AddForm.cs</DependentUpon>
+    <EmbeddedResource Include="AddNewMeetingForm.resx">
+      <DependentUpon>AddNewMeetingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BeforeFinishOther.resx">
+      <DependentUpon>BeforeFinishOther.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BeforeFinishSelf.resx">
+      <DependentUpon>BeforeFinishSelf.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -124,6 +139,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DBCalendar.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="App.Config" />
     <None Include="DBCalendar.edmx.diagram">
       <DependentUpon>DBCalendar.edmx</DependentUpon>
     </None>
@@ -139,22 +155,19 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DBCalendar.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DBCalendar.Context.cs</LastGenOutput>
       <DependentUpon>DBCalendar.edmx</DependentUpon>
+      <LastGenOutput>DBCalendar.Context.cs</LastGenOutput>
     </Content>
     <Content Include="DBCalendar.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DBCalendar.edmx</DependentUpon>
       <LastGenOutput>DBCalendar.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

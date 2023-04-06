@@ -24,16 +24,6 @@
     <NavigationProperty Name="Meeting" Relationship="Self.FK__Meeting__host__29572725" FromRole="NUser" ToRole="Meeting" />
     <NavigationProperty Name="Meeting1" Relationship="Self.User_Meeting" FromRole="NUser" ToRole="Meeting" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
   <Association Name="FK__Meeting__host__29572725">
     <End Role="NUser" Type="Self.NUser" Multiplicity="0..1" />
     <End Role="Meeting" Type="Self.Meeting" Multiplicity="*" />
@@ -53,7 +43,6 @@
   <EntityContainer Name="CalendarEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Meeting" EntityType="Self.Meeting" />
     <EntitySet Name="NUser" EntityType="Self.NUser" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <AssociationSet Name="FK__Meeting__host__29572725" Association="Self.FK__Meeting__host__29572725">
       <End Role="NUser" EntitySet="NUser" />
       <End Role="Meeting" EntitySet="Meeting" />

@@ -17,7 +17,8 @@ CREATE TABLE Meeting (
 );
 
 CREATE TABLE User_Meeting (
+	id int primary key identity(1,1),
 	idUser int foreign key references NUser(idUser),
 	idMeeting int foreign key references Meeting(idMeeting),
-	constraint pkUserMeeting primary key (idUser, idMeeting)
+	
 );

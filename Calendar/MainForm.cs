@@ -14,6 +14,7 @@ namespace Calendar
 {
 	public partial class MainForm : Form
 	{
+		[Obsolete]
 		public MainForm()
 		{
 			InitializeComponent();

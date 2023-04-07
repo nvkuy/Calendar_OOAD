@@ -139,10 +139,6 @@ namespace Calendar
 				
 			}
 		}
-		public void list_duplicate_group(Meeting a)
-		{
-
-		}
 		private bool check_duplicate_time(Meeting a)
 		{
 			

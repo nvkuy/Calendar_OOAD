@@ -26,6 +26,7 @@
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
+		[System.Obsolete]
 		private void InitializeComponent()
 		{
 			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -45,7 +46,7 @@
 			this.dateTimePicker1.Name = "dateTimePicker1";
 			this.dateTimePicker1.Size = new System.Drawing.Size(246, 22);
 			this.dateTimePicker1.TabIndex = 0;
-			this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+			this.dateTimePicker1.ValueChanged += new System.EventHandler(this.date_ValueChanged);
 			// 
 			// data
 			// 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -47,15 +48,12 @@ namespace Calendar
 		{
 			using (CalendarEntities db = new CalendarEntities())
 			{
-				List<Meeting> meeting = new List<Meeting>();
 				foreach (Meeting i in index)
 				{
-					meeting.Add(db.Meeting.Where(p => p.idMeeting == i.idMeeting).Select(p => p).FirstOrDefault());
-				}
-				foreach (Meeting i in meeting)
-				{
+					db.Entry(i).State = EntityState.Deleted;
 					db.Meeting.Remove(i);
 				}
+				db.Meeting.Add(meeting);
 				db.SaveChanges();
 				this.Close();
 			}

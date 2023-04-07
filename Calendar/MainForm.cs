@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Core.Objects;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace Calendar
 {
@@ -19,14 +21,21 @@ namespace Calendar
 		}
 		public void ShowDGV()
 		{
-			if (txtuser.Text.Length > 0)
+			if (txtuser.Text !="")
 			{
 				CalendarEntities db = new CalendarEntities();
 				var q = db.NUser.Where(p => p.name == txtuser.Text).Select(p => p.idUser).FirstOrDefault();
 				var s = db.Meeting.Where(p => (p.host == q || p.NUser1.Any(sv => sv.idUser == q)))
-					.Select(p => new { ID = p.idMeeting, DETAIL = p.name, LOCATION = p.location, NGAYBATDAU = p.startTime, NGAYKETTHUC = p.endTime, REMINDERTIME = p.remind, HOST = p.NUser.name }); ;
-
-				data.DataSource = s.ToList();
+					.Select(p => new ShowDATA { ID = p.idMeeting, DETAIL = p.name, LOCATION = p.location, NGAYBATDAU = p.startTime, NGAYKETTHUC = p.endTime, REMINDERTIME = p.remind, HOST = p.NUser.name }); ;
+				List<ShowDATA> s1=new List<ShowDATA>();
+				foreach(var i in s)
+				{
+					if(i.NGAYBATDAU.Value.Date==dateTimePicker1.Value.Date || i.NGAYKETTHUC.Value.Date == dateTimePicker1.Value.Date)
+					{
+						s1.Add(i);
+					}
+				}
+				data.DataSource = s1.ToList();
 			}
 		}
 		public void setName(string name)
@@ -66,7 +75,8 @@ namespace Calendar
 			}
 		}
 
-		private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+		[Obsolete]
+		private void date_ValueChanged(object sender, EventArgs e)
 		{
 			ShowDGV();
 		}

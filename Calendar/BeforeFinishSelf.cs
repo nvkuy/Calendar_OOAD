@@ -12,34 +12,52 @@ namespace Calendar
 {
 	public partial class BeforeFinishSelf : Form
 	{
-		public List<string> list = new List<string>();
-		public List<int> index=new List<int>();
-		public BeforeFinishSelf(List<int> index,List<string> list)
+		public Meeting meeting { get; set; }
+		public List<Meeting> index=new List<Meeting>();
+		public BeforeFinishSelf(Meeting a)
 		{
-			this.index = index;
-			this.list = list;
+			meeting = a;
 			InitializeComponent();
 			GUI();
 		}
 		public void GUI()
 		{
-			List<string> listview= new List<string>();
-			listview.AddRange(list);
+			using (CalendarEntities db = new CalendarEntities())
+			{
+				var s = db.Meeting.Where(p => (p.host == meeting.host || p.NUser1.Any(sv => sv.idUser == meeting.host)))
+					.Select(p => p).ToList();
+				foreach (var i in s)
+				{
+					if (meeting.startTime.Value >= i.endTime.Value || meeting.endTime.Value <= i.startTime)
+					{
+						continue;
+					}
+					else
+					{
+						index.Add(i);
+						duplicateList.Items.Add(i.name) ;
+					}
+				}
+				
+				
+
+			}
 		}
 		private void btnOK_Click(object sender, EventArgs e)
 		{
 			using (CalendarEntities db = new CalendarEntities())
 			{
 				List<Meeting> meeting = new List<Meeting>();
-				foreach (int i in index)
+				foreach (Meeting i in index)
 				{
-					meeting.Add(db.Meeting.Where(p => p.idMeeting == i).Select(p => p).FirstOrDefault());
+					meeting.Add(db.Meeting.Where(p => p.idMeeting == i.idMeeting).Select(p => p).FirstOrDefault());
 				}
 				foreach (Meeting i in meeting)
 				{
 					db.Meeting.Remove(i);
 				}
 				db.SaveChanges();
+				this.Close();
 			}
 		}
 

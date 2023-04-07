@@ -81,9 +81,14 @@ namespace Calendar
 				{
 					if (check_duplicate_time(a))
 					{
-						list_duplicate_time(a);
-						d();
-						this.Close();
+						BeforeFinishSelf f = new BeforeFinishSelf(a);
+						f.Show();
+						
+					}
+					else
+					{
+						BeforeFinishOther f = new BeforeFinishOther(a);
+						f.Show();
 					}
 				}
 			}
@@ -115,29 +120,7 @@ namespace Calendar
 		}
 		public void list_duplicate_time(Meeting a) 
 		{
-			using (CalendarEntities db = new CalendarEntities())
-			{
-				List<int> index=new List<int>();
-				List<string> list = new List<string>();
-				var q = db.NUser.Where(p => p.name == NameUser).Select(p => p.idUser).FirstOrDefault();
-				var s = db.Meeting.Where(p => (p.host == q || p.NUser1.Any(sv => sv.idUser == q)))
-					.Select(p => p).ToList();
-				foreach (var i in s)
-				{
-					if (a.startTime.Value >= i.endTime.Value || a.endTime.Value <= i.startTime)
-					{
-						continue;
-					}
-					else
-					{
-						index.Add(i.idMeeting);
-						list.Add(i.name);
-					}
-				}
-				BeforeFinishSelf f=new BeforeFinishSelf(index, list);
-				f.Show();
-				
-			}
+			
 		}
 		private bool check_duplicate_time(Meeting a)
 		{

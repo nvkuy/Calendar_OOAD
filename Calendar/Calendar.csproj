@@ -70,26 +70,26 @@
     <Compile Include="BeforeFinishSelf.Designer.cs">
       <DependentUpon>BeforeFinishSelf.cs</DependentUpon>
     </Compile>
-    <Compile Include="DBCalendar.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBCalendar.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBCalendar.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBCalendar.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DBCalendar.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBCalendar.edmx</DependentUpon>
-    </Compile>
     <Compile Include="AddNewMeetingForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddNewMeetingForm.Designer.cs">
       <DependentUpon>AddNewMeetingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CalendarEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CalendarEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CalendarEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CalendarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CalendarEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CalendarEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -104,13 +104,22 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Meeting.cs">
-      <DependentUpon>DBCalendar.tt</DependentUpon>
+      <DependentUpon>CalendarEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="NUser.cs">
-      <DependentUpon>DBCalendar.tt</DependentUpon>
+      <DependentUpon>CalendarEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>CalendarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>CalendarEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>CalendarEntities.tt</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddNewMeetingForm.resx">
       <DependentUpon>AddNewMeetingForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -135,13 +144,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EntityDeploy Include="DBCalendar.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DBCalendar.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="App.Config" />
-    <None Include="DBCalendar.edmx.diagram">
-      <DependentUpon>DBCalendar.edmx</DependentUpon>
+    <EntityDeploy Include="CalendarEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CalendarEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="CalendarEntities.edmx.diagram">
+      <DependentUpon>CalendarEntities.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -158,15 +167,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DBCalendar.Context.tt">
+    <Content Include="CalendarEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DBCalendar.edmx</DependentUpon>
-      <LastGenOutput>DBCalendar.Context.cs</LastGenOutput>
+      <DependentUpon>CalendarEntities.edmx</DependentUpon>
+      <LastGenOutput>CalendarEntities.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="DBCalendar.tt">
+    <Content Include="CalendarEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DBCalendar.edmx</DependentUpon>
-      <LastGenOutput>DBCalendar.cs</LastGenOutput>
+      <DependentUpon>CalendarEntities.edmx</DependentUpon>
+      <LastGenOutput>CalendarEntities.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

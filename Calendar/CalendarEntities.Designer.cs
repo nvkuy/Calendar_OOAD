@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\DUT_Folder\DUT_20222023\Học Kì 4\Phân tích & Thiết kế Hướng đối tượng\coding\BTCalendar\Calendar_OOAD\Calendar\DBCalendar.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\DUT_Folder\DUT_20222023\Học Kì 4\Phân tích & Thiết kế Hướng đối tượng\coding\BTCalendar\Calendar_OOAD\Calendar\CalendarEntities.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

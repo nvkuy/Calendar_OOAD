@@ -73,6 +73,7 @@ namespace Calendar
 				if (check_duplicate_time(a) == false && check_duplicate_group(a) == false)
 				{
 					db.Meeting.Add(a);
+					
 					db.SaveChanges();
 					d();
 					this.Close();

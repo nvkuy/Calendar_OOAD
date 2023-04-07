@@ -35,7 +35,6 @@
 			this.btnUser = new System.Windows.Forms.Button();
 			this.btnAdd = new System.Windows.Forms.Button();
 			this.btnShow = new System.Windows.Forms.Button();
-			this.btnDel = new System.Windows.Forms.Button();
 			this.txtuser = new System.Windows.Forms.TextBox();
 			((System.ComponentModel.ISupportInitialize)(this.data)).BeginInit();
 			this.SuspendLayout();
@@ -86,9 +85,9 @@
 			this.btnAdd.BackColor = System.Drawing.SystemColors.ControlText;
 			this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnAdd.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-			this.btnAdd.Location = new System.Drawing.Point(45, 572);
+			this.btnAdd.Location = new System.Drawing.Point(157, 572);
 			this.btnAdd.Name = "btnAdd";
-			this.btnAdd.Size = new System.Drawing.Size(235, 65);
+			this.btnAdd.Size = new System.Drawing.Size(322, 65);
 			this.btnAdd.TabIndex = 5;
 			this.btnAdd.Text = "Add Meeting";
 			this.btnAdd.UseVisualStyleBackColor = false;
@@ -99,25 +98,13 @@
 			this.btnShow.BackColor = System.Drawing.SystemColors.ControlText;
 			this.btnShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnShow.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-			this.btnShow.Location = new System.Drawing.Point(818, 572);
+			this.btnShow.Location = new System.Drawing.Point(780, 572);
 			this.btnShow.Name = "btnShow";
-			this.btnShow.Size = new System.Drawing.Size(246, 65);
+			this.btnShow.Size = new System.Drawing.Size(303, 65);
 			this.btnShow.TabIndex = 6;
 			this.btnShow.Text = "Show Reminder";
 			this.btnShow.UseVisualStyleBackColor = false;
 			this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
-			// 
-			// btnDel
-			// 
-			this.btnDel.BackColor = System.Drawing.SystemColors.InfoText;
-			this.btnDel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnDel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-			this.btnDel.Location = new System.Drawing.Point(459, 572);
-			this.btnDel.Name = "btnDel";
-			this.btnDel.Size = new System.Drawing.Size(239, 65);
-			this.btnDel.TabIndex = 7;
-			this.btnDel.Text = "Delete Meeting";
-			this.btnDel.UseVisualStyleBackColor = false;
 			// 
 			// txtuser
 			// 
@@ -135,7 +122,6 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1205, 687);
 			this.Controls.Add(this.txtuser);
-			this.Controls.Add(this.btnDel);
 			this.Controls.Add(this.btnShow);
 			this.Controls.Add(this.btnAdd);
 			this.Controls.Add(this.btnUser);
@@ -158,7 +144,6 @@
 		private System.Windows.Forms.Button btnUser;
 		private System.Windows.Forms.Button btnAdd;
 		private System.Windows.Forms.Button btnShow;
-		private System.Windows.Forms.Button btnDel;
 		private System.Windows.Forms.TextBox txtuser;
 	}
 }

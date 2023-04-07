@@ -73,7 +73,19 @@ namespace Calendar
 				if (check_duplicate_time(a) == false && check_duplicate_group(a) == false)
 				{
 					db.Meeting.Add(a);
-					
+					try
+					{
+						using (var key = new CalendarEntities())
+						{
+							var idMeeting = new Meeting { idMeeting = a.idMeeting };
+							idMeeting.NUser1.Add(new NUser { idUser = a.host.Value });
+							key.Meeting.Add(idMeeting);
+						}
+					}
+					catch
+					{
+
+					}
 					db.SaveChanges();
 					d();
 					this.Close();

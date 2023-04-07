@@ -29,3 +29,4 @@ D:\DUT_Folder\DUT_20222023\Học Kì 4\Phân tích & Thiết kế Hướng đố
 D:\DUT_Folder\DUT_20222023\Học Kì 4\Phân tích & Thiết kế Hướng đối tượng\coding\BTCalendar\Calendar_OOAD\Calendar\obj\Debug\Calendar.AddNewMeetingForm.resources
 D:\DUT_Folder\DUT_20222023\Học Kì 4\Phân tích & Thiết kế Hướng đối tượng\coding\BTCalendar\Calendar_OOAD\Calendar\obj\Debug\Calendar.BeforeFinishOther.resources
 D:\DUT_Folder\DUT_20222023\Học Kì 4\Phân tích & Thiết kế Hướng đối tượng\coding\BTCalendar\Calendar_OOAD\Calendar\obj\Debug\Calendar.BeforeFinishSelf.resources
+D:\DUT_Folder\DUT_20222023\Học Kì 4\Phân tích & Thiết kế Hướng đối tượng\coding\BTCalendar\Calendar_OOAD\Calendar\obj\Debug\Calendar.Reminder.resources

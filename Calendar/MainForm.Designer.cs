@@ -105,6 +105,7 @@
 			this.btnShow.TabIndex = 6;
 			this.btnShow.Text = "Show Reminder";
 			this.btnShow.UseVisualStyleBackColor = false;
+			this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
 			// 
 			// btnDel
 			// 

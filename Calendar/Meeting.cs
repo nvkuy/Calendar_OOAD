@@ -17,7 +17,7 @@ namespace Calendar
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Meeting()
         {
-            this.NUser1 = new HashSet<NUser>();
+            this.User_Meeting = new HashSet<User_Meeting>();
         }
     
         public int idMeeting { get; set; }
@@ -30,6 +30,6 @@ namespace Calendar
     
         public virtual NUser NUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NUser> NUser1 { get; set; }
+        public virtual ICollection<User_Meeting> User_Meeting { get; set; }
     }
 }

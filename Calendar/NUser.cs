@@ -18,7 +18,7 @@ namespace Calendar
         public NUser()
         {
             this.Meeting = new HashSet<Meeting>();
-            this.Meeting1 = new HashSet<Meeting>();
+            this.User_Meeting = new HashSet<User_Meeting>();
         }
     
         public int idUser { get; set; }
@@ -28,6 +28,6 @@ namespace Calendar
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Meeting> Meeting { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Meeting> Meeting1 { get; set; }
+        public virtual ICollection<User_Meeting> User_Meeting { get; set; }
     }
 }

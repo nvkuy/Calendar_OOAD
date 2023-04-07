@@ -73,22 +73,10 @@ namespace Calendar
 				if (check_duplicate_time(a) == false && check_duplicate_group(a) == false)
 				{
 					db.Meeting.Add(a);
-					try
-					{
-						using (var key = new CalendarEntities())
-						{
-
-							key.NUser.Add(a.NUser);
-							key.Meeting.Add(a);
-							a.NUser1.Add(a.NUser);
-							
-							key.SaveChanges();
-						}
-					}
-					catch
-					{
-
-					}
+					User_Meeting cp= new User_Meeting();
+					cp.idMeeting = a.idMeeting;
+					cp.idUser = a.host;
+					db.User_Meeting.Add(cp);
 					db.SaveChanges();
 					d();
 					this.Close();
@@ -105,6 +93,7 @@ namespace Calendar
 					{
 						BeforeFinishOther f = new BeforeFinishOther(a);
 						f.Show();
+						this.Close();
 					}
 				}
 			}
@@ -134,17 +123,14 @@ namespace Calendar
 				dateEnd.Value = date_choice;
 			}
 		}
-		public void list_duplicate_time(Meeting a) 
-		{
-			
-		}
+		
 		private bool check_duplicate_time(Meeting a)
 		{
 			
 			using(CalendarEntities db=new CalendarEntities())
 			{
 				var q = db.NUser.Where(p => p.name == NameUser).Select(p => p.idUser).FirstOrDefault();
-				var s = db.Meeting.Where(p => (p.host == q || p.NUser1.Any(sv => sv.idUser == q)))
+				var s = db.Meeting.Where(p => (p.host == q))
 					.Select(p=>p).ToList() ;
 				foreach(var i in s)
 				{
@@ -165,7 +151,7 @@ namespace Calendar
 			using (CalendarEntities db = new CalendarEntities())
 			{
 				var q = db.NUser.Where(p => p.name == NameUser).Select(p => p.idUser).FirstOrDefault();
-				var s = db.Meeting.Where(p => (p.host == q || p.NUser1.Any(sv => sv.idUser == q)))
+				var s = db.Meeting.Where(p => (p.host != q))
 					.Select(p => p).ToList();
 				foreach (var i in s)
 				{

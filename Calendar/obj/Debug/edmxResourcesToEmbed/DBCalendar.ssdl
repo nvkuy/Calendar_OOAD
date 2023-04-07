@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="CalendarOOADModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Meeting">
     <Key>
       <PropertyRef Name="idMeeting" />
@@ -20,13 +20,23 @@
     <Property Name="gmail" Type="varchar" MaxLength="111" Nullable="false" />
     <Property Name="name" Type="nvarchar" MaxLength="111" />
   </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
   <EntityType Name="User_Meeting">
     <Key>
-      <PropertyRef Name="idUser" />
-      <PropertyRef Name="idMeeting" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="idUser" Type="int" Nullable="false" />
-    <Property Name="idMeeting" Type="int" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idUser" Type="int" />
+    <Property Name="idMeeting" Type="int" />
   </EntityType>
   <Association Name="FK__Meeting__host__29572725">
     <End Role="NUser" Type="Self.NUser" Multiplicity="0..1" />
@@ -40,8 +50,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__User_Meet__idMee__2D27B809">
-    <End Role="Meeting" Type="Self.Meeting" Multiplicity="1" />
+  <Association Name="FK__User_Meet__idMee__3B75D760">
+    <End Role="Meeting" Type="Self.Meeting" Multiplicity="0..1" />
     <End Role="User_Meeting" Type="Self.User_Meeting" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Meeting">
@@ -52,8 +62,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__User_Meet__idUse__2C3393D0">
-    <End Role="NUser" Type="Self.NUser" Multiplicity="1" />
+  <Association Name="FK__User_Meet__idUse__3A81B327">
+    <End Role="NUser" Type="Self.NUser" Multiplicity="0..1" />
     <End Role="User_Meeting" Type="Self.User_Meeting" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="NUser">
@@ -64,19 +74,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="ModelStoreContainer">
+  <EntityContainer Name="CalendarOOADModelStoreContainer">
     <EntitySet Name="Meeting" EntityType="Self.Meeting" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NUser" EntityType="Self.NUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User_Meeting" EntityType="Self.User_Meeting" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__Meeting__host__29572725" Association="Self.FK__Meeting__host__29572725">
       <End Role="NUser" EntitySet="NUser" />
       <End Role="Meeting" EntitySet="Meeting" />
     </AssociationSet>
-    <AssociationSet Name="FK__User_Meet__idMee__2D27B809" Association="Self.FK__User_Meet__idMee__2D27B809">
+    <AssociationSet Name="FK__User_Meet__idMee__3B75D760" Association="Self.FK__User_Meet__idMee__3B75D760">
       <End Role="Meeting" EntitySet="Meeting" />
       <End Role="User_Meeting" EntitySet="User_Meeting" />
     </AssociationSet>
-    <AssociationSet Name="FK__User_Meet__idUse__2C3393D0" Association="Self.FK__User_Meet__idUse__2C3393D0">
+    <AssociationSet Name="FK__User_Meet__idUse__3A81B327" Association="Self.FK__User_Meet__idUse__3A81B327">
       <End Role="NUser" EntitySet="NUser" />
       <End Role="User_Meeting" EntitySet="User_Meeting" />
     </AssociationSet>

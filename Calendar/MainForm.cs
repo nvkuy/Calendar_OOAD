@@ -26,7 +26,7 @@ namespace Calendar
 			{
 				CalendarEntities db = new CalendarEntities();
 				var q = db.NUser.Where(p => p.name == txtuser.Text).Select(p => p.idUser).FirstOrDefault();
-				var s = db.Meeting.Where(p => (p.host == q || p.NUser1.Any(sv => sv.idUser == q)))
+				var s = db.Meeting.Where(p => (p.host == q ||checklist(p)))
 					.Select(p => new ShowDATA { ID = p.idMeeting, DETAIL = p.name, LOCATION = p.location, NGAYBATDAU = p.startTime, NGAYKETTHUC = p.endTime, REMINDERTIME = p.remind, HOST = p.NUser.name }); ;
 				List<ShowDATA> s1=new List<ShowDATA>();
 				foreach(var i in s)
@@ -38,6 +38,20 @@ namespace Calendar
 				}
 				data.DataSource = s1.ToList();
 			}
+		}
+		private bool checklist(Meeting m)
+		{
+			CalendarEntities db = new CalendarEntities();
+			var q = db.NUser.Where(p => p.name == txtuser.Text).Select(p => p.idUser).FirstOrDefault();
+			var ds = db.User_Meeting.Where(p => p.idUser == q).Select(p => p.idMeeting).ToList();
+			foreach( var i in ds)
+			{
+				if (m.idMeeting == i)
+				{
+					return true;
+				}
+			}
+			return false;
 		}
 		public void setName(string name)
 		{

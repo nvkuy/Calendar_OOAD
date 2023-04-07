@@ -10,13 +10,15 @@
 namespace Calendar
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class sp_helpdiagrams_Result
+    public partial class User_Meeting
     {
-        public string Database { get; set; }
-        public string Name { get; set; }
-        public int ID { get; set; }
-        public string Owner { get; set; }
-        public int OwnerID { get; set; }
+        public int id { get; set; }
+        public Nullable<int> idUser { get; set; }
+        public Nullable<int> idMeeting { get; set; }
+    
+        public virtual Meeting Meeting { get; set; }
+        public virtual NUser NUser { get; set; }
     }
 }

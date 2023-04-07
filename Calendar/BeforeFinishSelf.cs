@@ -25,7 +25,7 @@ namespace Calendar
 		{
 			using (CalendarEntities db = new CalendarEntities())
 			{
-				var s = db.Meeting.Where(p => (p.host == meeting.host || p.NUser1.Any(sv => sv.idUser == meeting.host)))
+				var s = db.Meeting.Where(p => (p.host == meeting.host ))
 					.Select(p => p).ToList();
 				foreach (var i in s)
 				{
@@ -50,10 +50,16 @@ namespace Calendar
 			{
 				foreach (Meeting i in index)
 				{
+					var s = db.User_Meeting.Where(p=>p.idMeeting==i.idMeeting).ToList();
+					foreach(var si in s)
+					{
+						db.User_Meeting.Remove(si);
+					}
 					db.Entry(i).State = EntityState.Deleted;
 					db.Meeting.Remove(i);
+					
 				}
-				db.Meeting.Add(meeting);
+				
 				db.SaveChanges();
 				this.Close();
 			}

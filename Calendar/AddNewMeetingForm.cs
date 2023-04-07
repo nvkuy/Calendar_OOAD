@@ -77,9 +77,12 @@ namespace Calendar
 					{
 						using (var key = new CalendarEntities())
 						{
-							var idMeeting = new Meeting { idMeeting = a.idMeeting };
-							idMeeting.NUser1.Add(new NUser { idUser = a.host.Value });
-							key.Meeting.Add(idMeeting);
+
+							key.NUser.Add(a.NUser);
+							key.Meeting.Add(a);
+							a.NUser1.Add(a.NUser);
+							
+							key.SaveChanges();
 						}
 					}
 					catch

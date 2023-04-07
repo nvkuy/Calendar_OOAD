@@ -45,6 +45,7 @@
 			this.cbbMinute = new System.Windows.Forms.ComboBox();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label8 = new System.Windows.Forms.Label();
+			this.cbAllDay = new System.Windows.Forms.CheckBox();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -210,11 +211,24 @@
 			this.label8.TabIndex = 19;
 			this.label8.Text = "Minute";
 			// 
+			// cbAllDay
+			// 
+			this.cbAllDay.AutoSize = true;
+			this.cbAllDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.cbAllDay.Location = new System.Drawing.Point(688, 342);
+			this.cbAllDay.Name = "cbAllDay";
+			this.cbAllDay.Size = new System.Drawing.Size(92, 24);
+			this.cbAllDay.TabIndex = 20;
+			this.cbAllDay.Text = "Cả ngày";
+			this.cbAllDay.UseVisualStyleBackColor = true;
+			this.cbAllDay.CheckedChanged += new System.EventHandler(this.cbAllDay_CheckedChanged);
+			// 
 			// AddNewMeetingForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1155, 684);
+			this.Controls.Add(this.cbAllDay);
 			this.Controls.Add(this.label8);
 			this.Controls.Add(this.label7);
 			this.Controls.Add(this.cbbMinute);
@@ -258,5 +272,6 @@
 		private System.Windows.Forms.ComboBox cbbMinute;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.CheckBox cbAllDay;
 	}
 }

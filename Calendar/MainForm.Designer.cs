@@ -41,10 +41,11 @@
 			// 
 			// dateTimePicker1
 			// 
-			this.dateTimePicker1.Location = new System.Drawing.Point(604, 28);
+			this.dateTimePicker1.Location = new System.Drawing.Point(770, 20);
 			this.dateTimePicker1.Name = "dateTimePicker1";
 			this.dateTimePicker1.Size = new System.Drawing.Size(246, 22);
 			this.dateTimePicker1.TabIndex = 0;
+			this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
 			// 
 			// data
 			// 
@@ -97,7 +98,7 @@
 			this.btnShow.BackColor = System.Drawing.SystemColors.ControlText;
 			this.btnShow.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnShow.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-			this.btnShow.Location = new System.Drawing.Point(604, 572);
+			this.btnShow.Location = new System.Drawing.Point(818, 572);
 			this.btnShow.Name = "btnShow";
 			this.btnShow.Size = new System.Drawing.Size(246, 65);
 			this.btnShow.TabIndex = 6;
@@ -109,7 +110,7 @@
 			this.btnDel.BackColor = System.Drawing.SystemColors.InfoText;
 			this.btnDel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btnDel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-			this.btnDel.Location = new System.Drawing.Point(321, 572);
+			this.btnDel.Location = new System.Drawing.Point(459, 572);
 			this.btnDel.Name = "btnDel";
 			this.btnDel.Size = new System.Drawing.Size(239, 65);
 			this.btnDel.TabIndex = 7;
@@ -118,6 +119,8 @@
 			// 
 			// txtuser
 			// 
+			this.txtuser.BackColor = System.Drawing.SystemColors.Info;
+			this.txtuser.Enabled = false;
 			this.txtuser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtuser.Location = new System.Drawing.Point(131, 24);
 			this.txtuser.Name = "txtuser";

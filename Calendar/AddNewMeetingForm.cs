@@ -12,13 +12,18 @@ namespace Calendar
 {
 	public partial class AddNewMeetingForm : Form
 	{
+		public delegate void MyDel();
+		public MyDel d { get; set; }
 		public string NameUser { get; set; }
-		public AddNewMeetingForm(string name)
+		public DateTime date_choice { get; set; }
+		public AddNewMeetingForm(string name, DateTime date_choice)
 		{
 			NameUser = name;
+			this.date_choice = date_choice;
 			InitializeComponent();
 			this.Text = "AddForm";
 			setup();
+			
 		}
 		public void setup()
 		{
@@ -36,6 +41,8 @@ namespace Calendar
 				{
 					cbbMinute.Items.Add(i);
 				}
+				dateStart.Value= date_choice;
+				dateEnd.Value= date_choice;
 		}
 
 		private void btnCancel_Click(object sender, EventArgs e)
@@ -61,17 +68,120 @@ namespace Calendar
 			}
 			a.host=db.NUser.Where(p=>p.name==NameUser).Select (p=>p.idUser).FirstOrDefault();
 
-			if (a.startTime < a.endTime &&(a.name.Length>0&&a.location.Length>0))
+			if (a.startTime <= a.endTime &&(a.name.Length>0&&a.location.Length>0))
 			{
-				db.Meeting.Add(a);
-				db.SaveChanges();
-				this.Close();
+				if (check_duplicate_time(a) == false && check_duplicate_group(a) == false)
+				{
+					db.Meeting.Add(a);
+					db.SaveChanges();
+					d();
+					this.Close();
+				}
+				else
+				{
+					if (check_duplicate_time(a))
+					{
+						list_duplicate_time(a);
+						d();
+						this.Close();
+					}
+				}
 			}
 			else
 			{
 				MessageBox.Show("Your information is not valid, please input a correct form");
 			}
 
+		}
+
+		private void cbAllDay_CheckedChanged(object sender, EventArgs e)
+		{
+			if (cbAllDay.Checked)
+			{
+				dateStart.Format = DateTimePickerFormat.Long;
+				dateEnd.Format = DateTimePickerFormat.Long;
+				dateStart.Value = date_choice;
+				dateEnd.Value = date_choice;
+			}
+			else
+			{
+				dateStart.Format = DateTimePickerFormat.Custom;
+				dateStart.CustomFormat = "dd MM yyyy	 hh:mm:ss  tt";
+				dateEnd.Format = DateTimePickerFormat.Custom;
+				dateEnd.CustomFormat = "dd MM yyyy		 hh:mm:ss  tt";
+				dateStart.Value = date_choice;
+				dateEnd.Value = date_choice;
+			}
+		}
+		public void list_duplicate_time(Meeting a) 
+		{
+			using (CalendarEntities db = new CalendarEntities())
+			{
+				List<int> index=new List<int>();
+				List<string> list = new List<string>();
+				var q = db.NUser.Where(p => p.name == NameUser).Select(p => p.idUser).FirstOrDefault();
+				var s = db.Meeting.Where(p => (p.host == q || p.NUser1.Any(sv => sv.idUser == q)))
+					.Select(p => p).ToList();
+				foreach (var i in s)
+				{
+					if (a.startTime.Value >= i.endTime.Value || a.endTime.Value <= i.startTime)
+					{
+						continue;
+					}
+					else
+					{
+						index.Add(i.idMeeting);
+						list.Add(i.name);
+					}
+				}
+				BeforeFinishSelf f=new BeforeFinishSelf(index, list);
+				f.Show();
+				
+			}
+		}
+		public void list_duplicate_group(Meeting a)
+		{
+
+		}
+		private bool check_duplicate_time(Meeting a)
+		{
+			
+			using(CalendarEntities db=new CalendarEntities())
+			{
+				var q = db.NUser.Where(p => p.name == NameUser).Select(p => p.idUser).FirstOrDefault();
+				var s = db.Meeting.Where(p => (p.host == q || p.NUser1.Any(sv => sv.idUser == q)))
+					.Select(p=>p).ToList() ;
+				foreach(var i in s)
+				{
+					if (a.startTime.Value>=i.endTime.Value ||a.endTime.Value<=i.startTime)
+					{
+						continue;
+					}
+					else
+					{
+						return true;
+					}
+				}
+				return false;
+			}
+		}
+		private bool check_duplicate_group(Meeting a)
+		{
+			using (CalendarEntities db = new CalendarEntities())
+			{
+				var q = db.NUser.Where(p => p.name == NameUser).Select(p => p.idUser).FirstOrDefault();
+				var s = db.Meeting.Where(p => (p.host == q || p.NUser1.Any(sv => sv.idUser == q)))
+					.Select(p => p).ToList();
+				foreach (var i in s)
+				{
+					if (a.name==i.name &&(a.startTime.Value==i.startTime.Value && a.endTime.Value == i.endTime.Value))
+					{
+						return true;
+						
+					}
+				}
+				return false;
+			}
 		}
 	}
 }

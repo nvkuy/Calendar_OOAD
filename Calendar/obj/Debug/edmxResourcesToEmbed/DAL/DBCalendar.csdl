@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CalendarOOADModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Meeting">
+    <Key>
+      <PropertyRef Name="idMeeting" />
+    </Key>
+    <Property Name="idMeeting" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="111" FixedLength="false" Unicode="true" />
+    <Property Name="location" Type="String" MaxLength="111" FixedLength="false" Unicode="true" />
+    <Property Name="startTime" Type="DateTime" Precision="3" />
+    <Property Name="endTime" Type="DateTime" Precision="3" />
+    <Property Name="remind" Type="Int32" />
+    <Property Name="host" Type="Int32" />
+    <NavigationProperty Name="NUser" Relationship="Self.FK__Meeting__host__29572725" FromRole="Meeting" ToRole="NUser" />
+    <NavigationProperty Name="User_Meeting" Relationship="Self.FK__User_Meet__idMee__3B75D760" FromRole="Meeting" ToRole="User_Meeting" />
+  </EntityType>
+  <EntityType Name="NUser">
+    <Key>
+      <PropertyRef Name="idUser" />
+    </Key>
+    <Property Name="idUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="gmail" Type="String" MaxLength="111" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="111" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Meeting" Relationship="Self.FK__Meeting__host__29572725" FromRole="NUser" ToRole="Meeting" />
+    <NavigationProperty Name="User_Meeting" Relationship="Self.FK__User_Meet__idUse__3A81B327" FromRole="NUser" ToRole="User_Meeting" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User_Meeting">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idUser" Type="Int32" />
+    <Property Name="idMeeting" Type="Int32" />
+    <NavigationProperty Name="Meeting" Relationship="Self.FK__User_Meet__idMee__3B75D760" FromRole="User_Meeting" ToRole="Meeting" />
+    <NavigationProperty Name="NUser" Relationship="Self.FK__User_Meet__idUse__3A81B327" FromRole="User_Meeting" ToRole="NUser" />
+  </EntityType>
+  <Association Name="FK__Meeting__host__29572725">
+    <End Role="NUser" Type="Self.NUser" Multiplicity="0..1" />
+    <End Role="Meeting" Type="Self.Meeting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NUser">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="Meeting">
+        <PropertyRef Name="host" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__User_Meet__idMee__3B75D760">
+    <End Role="Meeting" Type="Self.Meeting" Multiplicity="0..1" />
+    <End Role="User_Meeting" Type="Self.User_Meeting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Meeting">
+        <PropertyRef Name="idMeeting" />
+      </Principal>
+      <Dependent Role="User_Meeting">
+        <PropertyRef Name="idMeeting" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__User_Meet__idUse__3A81B327">
+    <End Role="NUser" Type="Self.NUser" Multiplicity="0..1" />
+    <End Role="User_Meeting" Type="Self.User_Meeting" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NUser">
+        <PropertyRef Name="idUser" />
+      </Principal>
+      <Dependent Role="User_Meeting">
+        <PropertyRef Name="idUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CalendarEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Meeting" EntityType="Self.Meeting" />
+    <EntitySet Name="NUser" EntityType="Self.NUser" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="User_Meeting" EntityType="Self.User_Meeting" />
+    <AssociationSet Name="FK__Meeting__host__29572725" Association="Self.FK__Meeting__host__29572725">
+      <End Role="NUser" EntitySet="NUser" />
+      <End Role="Meeting" EntitySet="Meeting" />
+    </AssociationSet>
+    <AssociationSet Name="FK__User_Meet__idMee__3B75D760" Association="Self.FK__User_Meet__idMee__3B75D760">
+      <End Role="Meeting" EntitySet="Meeting" />
+      <End Role="User_Meeting" EntitySet="User_Meeting" />
+    </AssociationSet>
+    <AssociationSet Name="FK__User_Meet__idUse__3A81B327" Association="Self.FK__User_Meet__idUse__3A81B327">
+      <End Role="NUser" EntitySet="NUser" />
+      <End Role="User_Meeting" EntitySet="User_Meeting" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

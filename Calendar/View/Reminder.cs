@@ -24,7 +24,7 @@ namespace Calendar
 		public void GUI()
 		{
 			txtuser.Text = username;
-			dateTimePicker1 = new DateTimePicker();
+			dateTimePicker1.Value= date;
 			ShowDGV();
 
 		}

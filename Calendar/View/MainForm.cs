@@ -101,7 +101,7 @@ namespace Calendar
 
 		private void btnShow_Click(object sender, EventArgs e)
 		{
-			Reminder f = new Reminder(txtuser.Text,dateTimePicker1.Value);
+			Reminder f = new Reminder(txtuser.Text,dateTimePicker1.Value.Date);
 			f.Show();
 		}
 	}

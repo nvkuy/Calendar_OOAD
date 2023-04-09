@@ -58,22 +58,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BeforeFinishOther.cs">
+    <Compile Include="View\BeforeFinishOther.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BeforeFinishOther.Designer.cs">
+    <Compile Include="View\BeforeFinishOther.Designer.cs">
       <DependentUpon>BeforeFinishOther.cs</DependentUpon>
     </Compile>
-    <Compile Include="BeforeFinishSelf.cs">
+    <Compile Include="View\BeforeFinishSelf.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BeforeFinishSelf.Designer.cs">
+    <Compile Include="View\BeforeFinishSelf.Designer.cs">
       <DependentUpon>BeforeFinishSelf.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddNewMeetingForm.cs">
+    <Compile Include="View\AddNewMeetingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddNewMeetingForm.Designer.cs">
+    <Compile Include="View\AddNewMeetingForm.Designer.cs">
       <DependentUpon>AddNewMeetingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DBCalendar.Context.cs">
@@ -91,16 +91,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBCalendar.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
+    <Compile Include="View\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
+    <Compile Include="View\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="View\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="View\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Meeting.cs">
@@ -111,32 +111,32 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reminder.cs">
+    <Compile Include="View\Reminder.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reminder.Designer.cs">
+    <Compile Include="View\Reminder.Designer.cs">
       <DependentUpon>Reminder.cs</DependentUpon>
     </Compile>
-    <Compile Include="ShowDATA.cs" />
+    <Compile Include="DTO\ShowDATA.cs" />
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>DBCalendar.tt</DependentUpon>
     </Compile>
     <Compile Include="User_Meeting.cs">
       <DependentUpon>DBCalendar.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddNewMeetingForm.resx">
+    <EmbeddedResource Include="View\AddNewMeetingForm.resx">
       <DependentUpon>AddNewMeetingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BeforeFinishOther.resx">
+    <EmbeddedResource Include="View\BeforeFinishOther.resx">
       <DependentUpon>BeforeFinishOther.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BeforeFinishSelf.resx">
+    <EmbeddedResource Include="View\BeforeFinishSelf.resx">
       <DependentUpon>BeforeFinishSelf.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
+    <EmbeddedResource Include="View\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -148,7 +148,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Reminder.resx">
+    <EmbeddedResource Include="View\Reminder.resx">
       <DependentUpon>Reminder.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.Config" />
@@ -185,6 +185,7 @@
       <LastGenOutput>DBCalendar.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
